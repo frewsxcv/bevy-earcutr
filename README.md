@@ -15,5 +15,5 @@ builder.add_earcutr_input(EarcutrInput {
     interior_indices: vec![...],
 });
 
-let mesh = builder.build().
+let mesh = builder.build();
 ```
