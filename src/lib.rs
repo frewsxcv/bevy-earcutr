@@ -1,4 +1,4 @@
-use bevy::prelude::*;
+use bevy_render::prelude::*;
 use std::convert::TryFrom;
 
 type EarcutrIndices = Vec<usize>;
@@ -103,8 +103,8 @@ pub fn build_mesh_from_earcutr(earcutr_result: EarcutrResult) -> Mesh {
 
 fn build_mesh_from_bevy(triangle_indices: BevyIndices, vertices: BevyVertices) -> Mesh {
     let num_vertices = vertices.len();
-    let mut mesh = Mesh::new(bevy::render::pipeline::PrimitiveTopology::TriangleList);
-    mesh.set_indices(Some(bevy::render::mesh::Indices::U32(triangle_indices)));
+    let mut mesh = Mesh::new(bevy_render::pipeline::PrimitiveTopology::TriangleList);
+    mesh.set_indices(Some(bevy_render::mesh::Indices::U32(triangle_indices)));
     mesh.set_attribute(Mesh::ATTRIBUTE_POSITION, vertices);
 
     let mut normals = Vec::new();
