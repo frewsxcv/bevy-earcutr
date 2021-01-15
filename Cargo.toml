@@ -3,8 +3,9 @@ name = "bevy-earcutr"
 version = "0.1.0"
 authors = ["Corey Farwell <coreyf@rwell.org>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "earcutr + Bevy"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/frewsxcv/bevy-earcutr"
 
 [dependencies]
 bevy_render = "0.4"
