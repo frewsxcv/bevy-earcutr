@@ -8,4 +8,4 @@ edition = "2018"
 
 [dependencies]
 bevy_render = "0.4"
-earcutr = { git = "https://github.com/donbright/earcutr.git" }
+earcutr = "0.1"
