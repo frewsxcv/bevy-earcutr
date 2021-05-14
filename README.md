@@ -1,6 +1,6 @@
 # bevy-earcutr
 
-Runs [earcutr](https://github.com/donbright/earcutr) on geometries and generates a [Bevy](https://github.com/bevyengine/bevy) `Mesh`.
+Runs [earcutr](https://github.com/frewsxcv/earcutr) on geometries and generates a [Bevy](https://github.com/bevyengine/bevy) `Mesh`.
 
 ## Examples
 
