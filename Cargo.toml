@@ -6,7 +6,8 @@ edition = "2018"
 description = "earcutr + Bevy"
 license = "MIT/Apache-2.0"
 repository = "https://github.com/frewsxcv/bevy-earcutr"
+resolver = "2"
 
 [dependencies]
-bevy_render = "0.5"
-earcutr = "0.1"
+bevy_render = "0.6"
+earcutr = "0.2"
