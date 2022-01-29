@@ -4,7 +4,7 @@ use std::convert::TryFrom;
 type EarcutrIndices = Vec<usize>;
 type EarcutrVertices = Vec<f64>;
 type BevyIndices = Vec<u32>;
-type BevyVertices = Vec<[f32; 2]>;
+type BevyVertices = Vec<[f32; 3]>;
 
 #[derive(Debug)]
 pub struct EarcutrInput {
@@ -96,7 +96,7 @@ pub fn build_mesh_from_earcutr(earcutr_result: EarcutrResult) -> Mesh {
     let vertices = earcutr_result
         .vertices
         .chunks(2)
-        .map(|n| [n[0] as f32, n[1] as f32])
+        .map(|n| [n[0] as f32, n[1] as f32, 0.0])
         .collect::<Vec<_>>();
     build_mesh_from_bevy(indices, vertices)
 }
