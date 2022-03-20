@@ -45,24 +45,16 @@ impl PolygonMeshBuilder {
         self.earcutr_inputs.push(earcutr_input);
     }
 
-    pub fn build(self) -> Mesh {
-        let result = self.run_earcutr();
-        build_mesh_from_earcutr(result)
+    pub fn build(self) -> Option<Mesh> {
+        let result = self.run_earcutr()?;
+        Some(build_mesh_from_earcutr(result))
     }
 
-    fn run_earcutr(self) -> EarcutrResult {
+    fn run_earcutr(self) -> Option<EarcutrResult> {
         let mut earcutr_inputs_iter = self.earcutr_inputs.into_iter();
 
         // Earcut the first polygon
-        let first_input = match earcutr_inputs_iter.next() {
-            Some(i) => i,
-            None => {
-                return EarcutrResult {
-                    triangle_indices: vec![],
-                    vertices: vec![],
-                }
-            }
-        };
+        let first_input = earcutr_inputs_iter.next()?;
         let first_triangle_indices =
             earcutr::earcut(&first_input.vertices, &first_input.interior_indices, 2);
         let mut earcutr_result = EarcutrResult {
@@ -83,7 +75,7 @@ impl PolygonMeshBuilder {
             });
         }
 
-        earcutr_result
+        Some(earcutr_result)
     }
 }
 
