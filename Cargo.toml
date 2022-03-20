@@ -2,7 +2,7 @@
 name = "bevy-earcutr"
 version = "0.3.1"
 authors = ["Corey Farwell <coreyf@rwell.org>"]
-edition = "2018"
+edition = "2021"
 description = "earcutr + Bevy"
 license = "MIT/Apache-2.0"
 repository = "https://github.com/frewsxcv/bevy-earcutr"
