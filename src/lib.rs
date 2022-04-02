@@ -31,13 +31,20 @@ impl EarcutrResult {
 
 pub struct PolygonMeshBuilder {
     earcutr_inputs: Vec<EarcutrInput>,
+    z_index: f32,
 }
 
 impl PolygonMeshBuilder {
     pub fn new() -> Self {
         PolygonMeshBuilder {
             earcutr_inputs: vec![],
+            z_index: 0.,
         }
+    }
+
+    pub fn with_z_index(mut self, z_index: f32) -> Self {
+        self.z_index = z_index;
+        self
     }
 
     /// Call for `add_earcutr_input` for each polygon you want to add to the mesh.
@@ -46,8 +53,9 @@ impl PolygonMeshBuilder {
     }
 
     pub fn build(self) -> Option<Mesh> {
+        let z_index = self.z_index;
         let result = self.run_earcutr()?;
-        Some(build_mesh_from_earcutr(result))
+        Some(build_mesh_from_earcutr(result, z_index))
     }
 
     fn run_earcutr(self) -> Option<EarcutrResult> {
@@ -79,7 +87,7 @@ impl PolygonMeshBuilder {
     }
 }
 
-pub fn build_mesh_from_earcutr(earcutr_result: EarcutrResult) -> Mesh {
+pub fn build_mesh_from_earcutr(earcutr_result: EarcutrResult, z_index: f32) -> Mesh {
     let indices = earcutr_result
         .triangle_indices
         .into_iter()
@@ -88,7 +96,7 @@ pub fn build_mesh_from_earcutr(earcutr_result: EarcutrResult) -> Mesh {
     let vertices = earcutr_result
         .vertices
         .chunks(2)
-        .map(|n| [n[0] as f32, n[1] as f32, 0.0])
+        .map(|n| [n[0] as f32, n[1] as f32, z_index])
         .collect::<Vec<_>>();
     build_mesh_from_bevy(indices, vertices)
 }
