@@ -1,6 +1,6 @@
 [package]
 name = "bevy-earcutr"
-version = "0.7.0"
+version = "0.8.0"
 authors = ["Corey Farwell <coreyf@rwell.org>"]
 edition = "2021"
 description = "earcutr + Bevy"
@@ -10,4 +10,4 @@ resolver = "2"
 
 [dependencies]
 bevy_render = { version = "0.9", default-features = false }
-earcutr = "0.2"
+earcutr = "0.4"

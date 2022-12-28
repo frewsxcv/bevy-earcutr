@@ -64,7 +64,7 @@ impl PolygonMeshBuilder {
         // Earcut the first polygon
         let first_input = earcutr_inputs_iter.next()?;
         let first_triangle_indices =
-            earcutr::earcut(&first_input.vertices, &first_input.interior_indices, 2);
+            earcutr::earcut(&first_input.vertices, &first_input.interior_indices, 2).unwrap();
         let mut earcutr_result = EarcutrResult {
             triangle_indices: first_triangle_indices,
             vertices: first_input.vertices,
@@ -76,7 +76,7 @@ impl PolygonMeshBuilder {
                 vertices,
                 interior_indices,
             } = earcutr_input;
-            let next_earcutr_result = earcutr::earcut(&vertices, &interior_indices, 2);
+            let next_earcutr_result = earcutr::earcut(&vertices, &interior_indices, 2).unwrap();
             earcutr_result.merge(EarcutrResult {
                 triangle_indices: next_earcutr_result,
                 vertices: vertices,
