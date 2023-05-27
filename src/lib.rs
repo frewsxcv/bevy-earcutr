@@ -35,13 +35,6 @@ pub struct PolygonMeshBuilder {
 }
 
 impl PolygonMeshBuilder {
-    pub fn new() -> Self {
-        PolygonMeshBuilder {
-            earcutr_inputs: vec![],
-            z_index: 0.,
-        }
-    }
-
     pub fn with_z_index(mut self, z_index: f32) -> Self {
         self.z_index = z_index;
         self
@@ -79,11 +72,20 @@ impl PolygonMeshBuilder {
             let next_earcutr_result = earcutr::earcut(&vertices, &interior_indices, 2).unwrap();
             earcutr_result.merge(EarcutrResult {
                 triangle_indices: next_earcutr_result,
-                vertices: vertices,
+                vertices,
             });
         }
 
         Some(earcutr_result)
+    }
+}
+
+impl Default for PolygonMeshBuilder {
+    fn default() -> Self {
+        PolygonMeshBuilder {
+            earcutr_inputs: vec![],
+            z_index: 0.,
+        }
     }
 }
 
