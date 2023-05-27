@@ -9,5 +9,5 @@ repository = "https://github.com/frewsxcv/bevy-earcutr"
 resolver = "2"
 
 [dependencies]
-bevy_render = { version = "0.9", default-features = false }
+bevy = { version = "0.10", default-features = false,  features = ["bevy_render"] }
 earcutr = "0.4"
