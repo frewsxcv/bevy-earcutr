@@ -1,4 +1,4 @@
-use bevy_render::prelude::*;
+use bevy::prelude::*;
 use std::convert::TryFrom;
 
 type EarcutrIndices = Vec<usize>;
@@ -35,13 +35,6 @@ pub struct PolygonMeshBuilder {
 }
 
 impl PolygonMeshBuilder {
-    pub fn new() -> Self {
-        PolygonMeshBuilder {
-            earcutr_inputs: vec![],
-            z_index: 0.,
-        }
-    }
-
     pub fn with_z_index(mut self, z_index: f32) -> Self {
         self.z_index = z_index;
         self
@@ -79,11 +72,20 @@ impl PolygonMeshBuilder {
             let next_earcutr_result = earcutr::earcut(&vertices, &interior_indices, 2).unwrap();
             earcutr_result.merge(EarcutrResult {
                 triangle_indices: next_earcutr_result,
-                vertices: vertices,
+                vertices,
             });
         }
 
         Some(earcutr_result)
+    }
+}
+
+impl Default for PolygonMeshBuilder {
+    fn default() -> Self {
+        PolygonMeshBuilder {
+            earcutr_inputs: vec![],
+            z_index: 0.,
+        }
     }
 }
 
@@ -103,8 +105,8 @@ pub fn build_mesh_from_earcutr(earcutr_result: EarcutrResult, z_index: f32) -> M
 
 fn build_mesh_from_bevy(triangle_indices: BevyIndices, vertices: BevyVertices) -> Mesh {
     let num_vertices = vertices.len();
-    let mut mesh = Mesh::new(bevy_render::render_resource::PrimitiveTopology::TriangleList);
-    mesh.set_indices(Some(bevy_render::mesh::Indices::U32(triangle_indices)));
+    let mut mesh = Mesh::new(bevy::render::render_resource::PrimitiveTopology::TriangleList);
+    mesh.set_indices(Some(bevy::render::mesh::Indices::U32(triangle_indices)));
     mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, vertices);
 
     let normals = vec![[0.0, 0.0, 0.0]; num_vertices];
