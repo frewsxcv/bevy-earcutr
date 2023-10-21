@@ -1,6 +1,6 @@
 [package]
 name = "bevy-earcutr"
-version = "0.9.0"
+version = "0.10.0"
 authors = ["Corey Farwell <coreyf@rwell.org>"]
 edition = "2021"
 description = "earcutr + Bevy"
@@ -9,5 +9,5 @@ repository = "https://github.com/frewsxcv/bevy-earcutr"
 resolver = "2"
 
 [dependencies]
-bevy = { version = "0.10", default-features = false,  features = ["bevy_render"] }
+bevy = { version = "0.11", default-features = false,  features = ["bevy_render"] }
 earcutr = "0.4"
