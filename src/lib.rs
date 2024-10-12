@@ -88,6 +88,7 @@ impl<T: num_traits::Float> Default for PolygonMeshBuilder<T> {
     }
 }
 
+#[derive(Debug)]
 pub enum Error {
     EmptyInput,
     CouldNotConvertToF32,

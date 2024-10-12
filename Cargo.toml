@@ -1,6 +1,6 @@
 [package]
 name = "bevy-earcutr"
-version = "0.14.0"
+version = "0.14.1"
 authors = ["Corey Farwell <coreyf@rwell.org>"]
 edition = "2021"
 description = "earcutr + Bevy"
