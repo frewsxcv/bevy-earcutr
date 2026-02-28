@@ -122,7 +122,7 @@ fn build_mesh_from_bevy(triangle_indices: BevyIndices, vertices: BevyVertices) -
         bevy::render::render_resource::PrimitiveTopology::TriangleList,
         Default::default(),
     );
-    mesh.insert_indices(bevy::render::mesh::Indices::U32(triangle_indices));
+    mesh.insert_indices(bevy::mesh::Indices::U32(triangle_indices));
     mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, vertices);
 
     let normals = vec![[0.0, 0.0, 0.0]; num_vertices];
