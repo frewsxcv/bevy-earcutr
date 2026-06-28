@@ -1,3 +1,5 @@
+**⚠️ This repository has moved to <https://tangled.org/rwell.org/bevy-earcutr> ⚠️**
+
 # bevy-earcutr
 
 Runs [earcutr](https://github.com/frewsxcv/earcutr) on geometries and generates a [Bevy](https://github.com/bevyengine/bevy) `Mesh`.
